@@ -13,6 +13,11 @@
 
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+	<!-- Default theme -->
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+
+
 	</head>
 	<body>
 	<section class="ftco-section">
@@ -25,12 +30,13 @@
 			<div class="row justify-content-center">
 				<div class="col-md-7 col-lg-5">
 					<div class="wrap">
-						<div class="img" style="background-image: url({% static 'images/bg-1.jpg' %});"></div>
+						<img src="{% static 'images/bg-1.jpg' %}" alt="" class="img">
+
 						<div class="login-wrap p-4 p-md-5">
 			      	<div class="d-flex">
-			      		<div class="w-100">
-			      			<h3 class="mb-4">Enter OTP</h3>
-			      		</div>
+						<div class="w-100" style="text-align: center;">
+							<h3 class="mb-4">Enter<img src="{% static 'images/FYP_Logo.png' %}" alt="" class="img" style="width:30%;height:16%;">TP</h3>
+						</div>
 
 			      	</div>
 						<form action="" method="POST" class="signin-form">
@@ -44,11 +50,8 @@
 						<button type='submit' name='resend' style="border:none; background-color:#fff; color:#6DA9E4">Resend OTP</button>
 		            	<button type="submit" name='submit' class="form-control btn btn-primary rounded submit px-3">Submit</button>
 		            </div>
-
 		            </div>
 		          </form>
-                  <p class="text-center">Already have an account? <a data-toggle="tab" href="#reset">Reset</a></p>
-		          <p class="text-center">Already have an account? <a data-toggle="tab" href="#signup">Sign Up</a></p>
 		        </div>
 		      </div>
 				</div>
@@ -60,6 +63,22 @@
   <script src="{% static 'js/popper.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+	<script>
+		"{% for flashmsg in messages %}"
+			alertify.set('notifier','position', 'top-center');
+			"{% if flashmsg.tags == 'success' %}"
+				alertify.success('{{ flashmsg }}');
+			"{% elif flashmsg.tags == 'warning' %}"
+				alertify.warning('{{ flashmsg }}');
+			"{% elif flashmsg.tags == 'error' %}"
+				alertify.error('{{ flashmsg }}');
+			" {% else %}"
+				alertify.message('{{ flashmsg }}');
+			"{% endif %}"
+		"{% endfor %}"
+	</script>
+
 
 	</body>
 </html>

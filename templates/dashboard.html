@@ -1,0 +1,232 @@
+
+{% extends 'basee.html' %}
+{% load static %}
+
+{% block content %}
+<section id="hero-banner">
+  <div class="container-fluid">
+  </div>
+  <div class="px-4">
+    <div class="row gx-5">
+      <div class="col-5 desc">
+       <div class="p-3">
+        <h1><span style="color:#FC8019">Food available</span> to be ordered in Mongar.</h1>
+        <form class="d-flex position-relative" role="search">
+          <div class="input-group mb-1">
+            <input type="text" class="form-control" placeholder="Search for a food" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text bg-dark" id="basic-addon2" style="height: 75%; margin-top: 2%;"><button class="btn btn-dark">Search</button></span>
+          </div>
+        </form>
+
+      </div>
+      </div>
+      <div class="col-6" style="padding:0">
+        <div class="swiper-container">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide menu-img">
+                <img src="{% static 'images/img1.jpg'%}" alt="First slide">
+              </div>
+              <div class="swiper-slide">
+                <img src="{% static 'images/img2.jpg'%}" alt="Second slide">
+              </div>
+              <div class="swiper-slide">
+                <img src="{% static 'images/img3.jpg'%}" alt="Third slide">
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<section id="content">
+  <div class="container px-4">
+    <div class="row gx-5">
+      <div class="col-lg-6">
+       <div class="p-3">
+        <h5>Trending Items</h5>
+        <div class="container overflow-hidden">
+          <div class="row gy-5 rows-cols-2">
+            <div class="col-6">
+              <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide"><br>
+                <span>Name</span><br>
+                <span>Amount</span><br>
+                {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-6 ">
+              <div class="p-3 img-container">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                <span>Name</span><br>
+                <span>Amount</span>
+                {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="row gy-5">
+            <div class="col-6">
+              <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                <span>Name</span><br>
+                <span>Amount</span>
+                {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-6 ">
+              <div class="p-3 img-container">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                <span>Name</span><br>
+                <span>Amount</span>
+                {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-3">
+         <h5>New Items</h5>
+         <div class="container overflow-hidden">
+           <div class="row gy-5 rows-cols-2">
+             <div class="col-6">
+               <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide"><br>
+                 <span>Name</span><br>
+                 <span>Amount</span>
+                 {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+               </div>
+             </div>
+             <div class="col-6 ">
+               <div class="p-3 img-container">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                 <span>Name</span><br>
+                 <span>Amount</span>
+                 {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+               </div>
+             </div>
+           </div>
+           <div class="row gy-5">
+             <div class="col-6">
+               <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                 <span>Name</span><br>
+                 <span>Amount</span>
+                 {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+               </div>
+             </div>
+             <div class="col-6 ">
+               <div class="p-3 img-container">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                 <span>Name</span><br>
+                 <span>Amount</span>
+                 {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+                {% endif %}
+                </div>
+
+             </div>
+
+           </div>
+         </div>
+
+       </div>
+       </div>
+
+    </div>
+  </div>
+</section>
+<section id="all-menu">
+  <div class='menu-heading container-fluid'>
+    <h4>All available menu</h4>
+  </div>
+  <br><br>
+</section>
+
+<section class="slider_container">
+  <div class="container">
+    <h5>All Menu</h5>
+    <div class="swiper cart_slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img1.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+            {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img2.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+            {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img3.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+            {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img1.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+            {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img1.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+            {% if user.role == 'customer' %}
+                  <button class="btn btn-warning">Add to cart</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

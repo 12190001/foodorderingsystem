@@ -1,399 +1,188 @@
+
+{% extends 'basee.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <title>Document</title>
-</head>
-<style>
-   html,
-    body {
-      position: relative;
-      height: 100%;
-    }
-    body {
-      background: #ffffff;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
-    .swiper-slide {
-      width:100%;
-      height: 25rem;
-      background-color: #fff;
-      border-radius: 10px;
-    }
 
-    .swiper-slide img{
-      width:20rem;
-      height: 100%;
-      border-radius: 10px;
-    }
-    .swiper-wrapper{
-      width: 20rem;
-    }
-    .img-container{
-      border-radius: 10px;
+{% block content %}
+<section id="hero-banner">
+  <div class="container-fluid">
+  </div>
+  <div class="px-4">
+    <div class="row gx-5">
+      <div class="col-5 desc">
+       <div class="p-3">
+        <h1><span style="color:#FC8019">Food available</span> to be ordered in Mongar.</h1>
+        <form class="d-flex position-relative" role="search">
+          <div class="input-group mb-1">
+            <input type="text" class="form-control" placeholder="Search for a food" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-text bg-dark" id="basic-addon2" style="height: 75%; margin-top: 2%;"><button class="btn btn-dark">Search</button></span>
+          </div>
+        </form>
 
-    }
-    .img-container img{
-      height:10rem;
-      width:11.5rem;
-      border-radius: 10px;
-    }
-
-    #all-menu{
-      text-align: center;
-    }
-    .menu-heading{
-      background-color:#FFB703;
-      color: #fff;
-      padding: 2rem;
-    }
-    .img_box img{
-      width:11.5rem;
-      height:10rem
-
-    }
-    .slider_container .container{
-      padding:0 10rem;
-      max-width: 1230px;
-      margin:0 auto;
-    }
-    .card_slider{
-      padding:50px 0;
-    }
-    .desc{
-      margin-top: 2rem;
-      margin-left: 3.5rem;
-    }
-    #hero-banner{
-      margin-top:2rem;
-      margin-bottom:10rem;
-    }
-
-    #hero-banner form{
-      margin-top: 5rem;
-    }
-    .notification {
-      background-color: #ffffff;
-      color: white;
-      text-decoration: none;
-      padding: 15px 26px;
-      position: relative;
-      display: inline-block;
-      border-radius: 2px;
-    }
-
-    .notification:hover {
-      background: rgb(44, 43, 43);
-    }
-
-    .notification .badge {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      padding: 5px 10px;
-      border-radius: 50%;
-      background: rgb(255, 25, 0);
-      color: white;
-    }
-
-
-
-</style>
-<body>
-    <section id='nav'>
-        <nav class="navbar navbar-expand-lg mx-5">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="{% static 'images/FYP_Logo.png'%}" alt="" style="height: 150px;width: 180px;"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                {% if user.is_authenticated %}
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Menu</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#" class="notification" style="">
-                      <span ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16" style="color:#000">
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                      </svg></span>
-                      <span class="badge">3</span>
-                    </a>
-                  </li>
-                </ul>
-                <form class="d-flex position-relative" role="search" method="POST" action="/logout/">
-                {% csrf_token %}
-                  <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-                  <button class="btn btn-dark" style="margin-right:5px;" type="submit">Logout</button>
-                </form>
-                {% else %}
-                <form class="d-flex position-relative" role="search">
-                  <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-                  <button class="btn btn-dark" style="margin-right:5px;" type="submit">Sign Up</button>
-                  <button class="btn btn-dark" type="submit">Sign In</button>
-                </form>
-                {% endif %}
-              </div>
-            </div>
-          </nav>
-    </section>
-    <section id="hero-banner">
-      <div class="container-fluid">
       </div>
-      <div class="px-4">
-        <div class="row gx-5">
-          <div class="col-5 desc">
-           <div class="p-3">
-            <h1><span style="color:#FC8019">Food available</span> to be ordered in Mongar.</h1>
-            <form class="d-flex position-relative" role="search">
-              <div class="input-group mb-1">
-                <input type="text" class="form-control" placeholder="Search for a food" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <span class="input-group-text bg-dark" id="basic-addon2"><button class="btn btn-dark">Search</button></span>
+      </div>
+      <div class="col-6" style="padding:0">
+        <div class="swiper-container">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide menu-img">
+                <img src="{% static 'images/img1.jpg'%}" alt="First slide">
               </div>
-            </form>
-
-          </div>
-          </div>
-          <div class="col-6" style="padding:0">
-            <div class="swiper-container">
-              <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide menu-img">
-                    <img src="{% static 'images/img1.jpg'%}" alt="First slide">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="{% static 'images/img2.jpg'%}" alt="Second slide">
-                  </div>
-                  <div class="swiper-slide">
-                    <img src="{% static 'images/img3.jpg'%}" alt="Third slide">
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
+              <div class="swiper-slide">
+                <img src="{% static 'images/img2.jpg'%}" alt="Second slide">
+              </div>
+              <div class="swiper-slide">
+                <img src="{% static 'images/img3.jpg'%}" alt="Third slide">
               </div>
             </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
 
-    </section>
-    <section id="content">
-      <div class="container px-4">
-        <div class="row gx-5">
-          <div class="col-lg-6">
-           <div class="p-3">
-            <h5>Trending Items</h5>
-            <div class="container overflow-hidden">
-              <div class="row gy-5 rows-cols-2">
-                <div class="col-6">
-                  <div class="p-3 img-container" style="background-color:#F8F8F8;">
-                    <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide"><br>
-                    <span>Name</span><br>
-                    <span>Amount</span>
-                  </div>
-                </div>
-                <div class="col-6 ">
-                  <div class="p-3 img-container">
-                    <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
-                    <span>Name</span><br>
-                    <span>Amount</span>
-                  </div>
-                </div>
+</section>
+<section id="content">
+  <div class="container px-4">
+    <div class="row gx-5">
+      <div class="col-lg-6">
+       <div class="p-3">
+        <h5>Trending Items</h5>
+        <div class="container overflow-hidden">
+          <div class="row gy-5 rows-cols-2">
+            <div class="col-6">
+              <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide"><br>
+                <span>Name</span><br>
+                <span>Amount</span>
               </div>
-              <div class="row gy-5">
-                <div class="col-6">
-                  <div class="p-3 img-container" style="background-color:#F8F8F8;">
-                    <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
-                    <span>Name</span><br>
-                    <span>Amount</span>
-                  </div>
-                </div>
-                <div class="col-6 ">
-                  <div class="p-3 img-container">
-                    <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
-                    <span>Name</span><br>
-                    <span>Amount</span></div>
-                </div>
-
+            </div>
+            <div class="col-6 ">
+              <div class="p-3 img-container">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                <span>Name</span><br>
+                <span>Amount</span>
               </div>
+            </div>
+          </div>
+          <div class="row gy-5">
+            <div class="col-6">
+              <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                <span>Name</span><br>
+                <span>Amount</span>
+              </div>
+            </div>
+            <div class="col-6 ">
+              <div class="p-3 img-container">
+                <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                <span>Name</span><br>
+                <span>Amount</span></div>
             </div>
 
           </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-3">
-             <h5>New Items</h5>
-             <div class="container overflow-hidden">
-               <div class="row gy-5 rows-cols-2">
-                 <div class="col-6">
-                   <div class="p-3 img-container" style="background-color:#F8F8F8;">
-                     <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide"><br>
-                     <span>Name</span><br>
-                     <span>Amount</span>
-                   </div>
-                 </div>
-                 <div class="col-6 ">
-                   <div class="p-3 img-container">
-                     <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
-                     <span>Name</span><br>
-                     <span>Amount</span>
-                   </div>
-                 </div>
-               </div>
-               <div class="row gy-5">
-                 <div class="col-6">
-                   <div class="p-3 img-container" style="background-color:#F8F8F8;">
-                     <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
-                     <span>Name</span><br>
-                     <span>Amount</span>
-                   </div>
-                 </div>
-                 <div class="col-6 ">
-                   <div class="p-3 img-container">
-                     <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
-                     <span>Name</span><br>
-                     <span>Amount</span></div>
-                 </div>
+        </div>
 
+      </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-3">
+         <h5>New Items</h5>
+         <div class="container overflow-hidden">
+           <div class="row gy-5 rows-cols-2">
+             <div class="col-6">
+               <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide"><br>
+                 <span>Name</span><br>
+                 <span>Amount</span>
                </div>
+             </div>
+             <div class="col-6 ">
+               <div class="p-3 img-container">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                 <span>Name</span><br>
+                 <span>Amount</span>
+               </div>
+             </div>
+           </div>
+           <div class="row gy-5">
+             <div class="col-6">
+               <div class="p-3 img-container" style="background-color:#F8F8F8;">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                 <span>Name</span><br>
+                 <span>Amount</span>
+               </div>
+             </div>
+             <div class="col-6 ">
+               <div class="p-3 img-container">
+                 <img class="image-fluid" src="{% static 'images/img1.jpg'%}" alt="First slide">
+                 <span>Name</span><br>
+                 <span>Amount</span></div>
              </div>
 
            </div>
-           </div>
+         </div>
 
-        </div>
-      </div>
-    </section>
-    <section id="all-menu">
-      <div class='menu-heading container-fluid'>
-        <h4>All available menu</h4>
-      </div>
-      <br><br>
-    </section>
+       </div>
+       </div>
 
-    <section class="slider_container">
-      <div class="container">
-        <h5>All Menu</h5>
-        <div class="swiper cart_slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="img_box">
-                <img src="{% static 'images/img1.jpg'%}" alt="">
-                <span>Name</span><br>
-                <span>Amount</span>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="img_box">
-                <img src="{% static 'images/img2.jpg'%}" alt="">
-                <span>Name</span><br>
-                <span>Amount</span>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="img_box">
-                <img src="{% static 'images/img3.jpg'%}" alt="">
-                <span>Name</span><br>
-                <span>Amount</span>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="img_box">
-                <img src="{% static 'images/img1.jpg'%}" alt="">
-                <span>Name</span><br>
-                <span>Amount</span>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="img_box">
-                <img src="{% static 'images/img1.jpg'%}" alt="">
-                <span>Name</span><br>
-                <span>Amount</span>
-              </div>
-            </div>
+    </div>
+  </div>
+</section>
+<section id="all-menu">
+  <div class='menu-heading container-fluid'>
+    <h4>All available menu</h4>
+  </div>
+  <br><br>
+</section>
+
+<section class="slider_container">
+  <div class="container">
+    <h5>All Menu</h5>
+    <div class="swiper cart_slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img1.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img2.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img3.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img1.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="img_box">
+            <img src="{% static 'images/img1.jpg'%}" alt="">
+            <span>Name</span><br>
+            <span>Amount</span>
+          </div>
         </div>
       </div>
-    </section>
-    <section id="footer">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</section>
 
-    </section>
-
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-   var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 2,
-  centeredSlides: true,
-  spaceBetween: 30,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  zoom: {
-    maxRatio: 2,
-    minRatio: 1.5,
-  },
-  effect: 'coverflow', // add coverflow effect
-  coverflowEffect: {
-    rotate:0,
-    stretch:0,
-    depth: 300,
-    modifier: 5.5,
-  },
-  on: {
-    slideChangeTransitionEnd: function () {
-      console.log('clicked!')
-      this.zoom.in();
-    },
-  },
-});
-
-swiper.on("slideChangeTransitionStart", swiper.zoom.out);
-swiper.on("slideChangeTransitionEnd", swiper.zoom.in);
-
-var swiperMenu = new Swiper(".cart_slider", {
-  slidesPerView: 4,
-  centeredSlides: true,
-  spaceBetween: 10,
-  navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-});
-
-  </script>
-
-
-</html>
+{% endblock %}

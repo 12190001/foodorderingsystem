@@ -38,6 +38,6 @@ from food import models
 #         }),
 #     )
 
-admin.site.register(models.Owner)
-admin.site.register(models.Manager)
+admin.site.register(models.CustomUser)
+admin.site.register(models.Notification)
 
